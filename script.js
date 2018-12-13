@@ -14,11 +14,13 @@ $(function() {
 
     [0, 4, 8],
     [2, 4, 6]
-  ]
+  ];
+
+  console.log(solutions.length)
 
   function tdClick() {
-    $(this).addClass(turn)
-    $(this).html(turn)
+    $(this).addClass(turn);
+    $(this).html(turn);
     checkSolution();
 
     if (turn == "X") {
@@ -38,7 +40,30 @@ $(function() {
     $turnText.html("It is X's turn")
   }
 
-  function checkSolution() {}
+  function checkSolution() {
+    for (i = 0; i < solutions.length; i++) {
+      solution = solutions[i];
+
+      if (
+        $tds.eq(solution[0]).html() == turn &&
+        $tds.eq(solution[1]).html() == turn &&
+        $tds.eq(solution[2]).html() == turn
+      ) {
+        console.log(turn + " Wins!")
+      }
+    }
+
+
+    // if (
+    //   $tds.eq(0).html() == turn &&
+    //   $tds.eq(1).html() == turn &&
+    //   $tds.eq(2).html() == turn
+    // ) {
+    //   console.log(turn + " won")
+    // }
+
+
+  }
 
   $tds.click(tdClick);
   $reset.click(resetClick)
